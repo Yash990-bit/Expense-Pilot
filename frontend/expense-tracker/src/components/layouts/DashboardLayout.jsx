@@ -4,7 +4,12 @@ import Navbar from './Navbar'
 import SideMenu from './SideMenu'
 
 const DashboardLayout = ({ children, activeMenu }) => {
-    const { user } = useContext(UserContext)
+    const { user, loading } = useContext(UserContext)
+
+    if (loading) {
+        return <div className="flex items-center justify-center min-h-screen">Loading...</div>
+    }
+
     return (
         <div className=''>
             <Navbar activeMenu={activeMenu} />
