@@ -6,9 +6,11 @@ import Signup from "./pages/Auth/Signup"
 import Home from "./pages/Dashboard/Home"
 import Income from "./pages/Dashboard/Income"
 import Expense from "./pages/Dashboard/Expense"
+import UserProvider from './context/userContext';
 
-function App() {
+const  App=()=> {
   return (
+    <UserProvider>
     <div>
     <Router>
       <Routes>
@@ -21,6 +23,7 @@ function App() {
       </Routes>
     </Router>
     </div>
+    </UserProvider>
   )
 }
 
