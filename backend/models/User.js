@@ -1,25 +1,24 @@
-const mongoose=require("mongoose")
+const mongoose = require("mongoose")
 
-const bcrypt=require("bcryptjs")
+const bcrypt = require("bcryptjs")
 
-const UserSchema=new mongoose.Schema(
+const UserSchema = new mongoose.Schema(
     {
-    fullName:{type:String,required:true},
-    email:{type:String,required:true,unique:true},
-    password:{type:String,require:true},
-    profileImageUrl:{type:String,default:null},
+        fullName: { type: String, required: true },
+        email: { type: String, required: true, unique: true },
+        password: { type: String, required: true },
+        profileImageUrl: { type: String, default: null },
     },
-    {timestamps:true}
+    { timestamps: true }
 )
 
-UserSchema.pre('save',async function (next) {
-    if(!this.isModified('password')) return next()
-    this.password=await bcrypt.hash(this.password,10)
-    next()
+UserSchema.pre('save', async function () {
+    if (!this.isModified('password')) return
+    this.password = await bcrypt.hash(this.password, 10)
 })
 
-UserSchema.methods.comparePassword=async function (candidatePassword) {
-return await bcrypt.compare(candidatePassword,this.password)
+UserSchema.methods.comparePassword = async function (candidatePassword) {
+    return await bcrypt.compare(candidatePassword, this.password)
 }
 
-module.exports = mongoose.model("User",UserSchema)
+module.exports = mongoose.model("User", UserSchema)

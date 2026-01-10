@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="Layer_1" width="98" height="98" viewBox="0 0 98 98">
+  <defs>
+    <style>.cls-1{fill:url(#linear-gradient);fill-rule:evenodd;stroke-width:0px;}</style>
+    <linearGradient id="linear-gradient" x1="83.15" y1="72.91" x2="14.85" y2="25.09" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00a9ce"></stop>
+      <stop offset=".24" stop-color="#018bb5"></stop>
+      <stop offset=".75" stop-color="#054078"></stop>
+      <stop offset="1" stop-color="#081a59"></stop>
+    </linearGradient>
+  </defs>
+  <path class="cls-1" d="M57.58,71.46c0-7.67,6.22-13.88,13.88-13.88h17.96c4.74,0,8.58-3.84,8.58-8.58s-3.84-8.58-8.58-8.58h-17.96c-7.67,0-13.88-6.22-13.88-13.88V8.57C57.58,3.84,53.74,0,49,0s-8.58,3.84-8.58,8.57v17.97c0,7.67-6.22,13.88-13.88,13.88H8.57c-4.74,0-8.57,3.84-8.57,8.58s3.84,8.58,8.57,8.58h17.97c7.67,0,13.88,6.22,13.88,13.88v17.97c0,4.74,3.84,8.58,8.58,8.58s8.58-3.84,8.58-8.58v-17.97Z"></path>
+</svg>
