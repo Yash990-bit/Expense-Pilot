@@ -4,24 +4,24 @@ import { useNavigate } from "react-router-dom"
 import axiosInstance from "../utils/axiosinstance"
 import { API_PATHS } from "../utils/apiPaths"
 
-export const useUserAuth=()=>{
-    const {user,updatedUser,clearUser}=useContext(UserContext)
-    const navigate=useNavigate()
+export const useUserAuth = () => {
+    const { user, updateUser, clearUser } = useContext(UserContext)
+    const navigate = useNavigate()
 
-    useEffect(()=>{
-        if(user) return
+    useEffect(() => {
+        if (user) return
 
-        let isMounted=true
-        const fetchUserInfo=async ()=>{
-            try{
-                const response=await axiosInstance.get(API_PATHS.AUTH.GET_USER_INFO)
+        let isMounted = true
+        const fetchUserInfo = async () => {
+            try {
+                const response = await axiosInstance.get(API_PATHS.AUTH.GET_USER_INFO)
 
-                if(isMounted && response.data){
-                    updatedUser(response.data)
+                if (isMounted && response.data) {
+                    updateUser(response.data)
                 }
-            }catch(error){
-                console.error("Failed to fetch user info:",error)
-                if(isMounted){
+            } catch (error) {
+                console.error("Failed to fetch user info:", error)
+                if (isMounted) {
                     clearUser()
                     navigate("/login")
                 }
@@ -29,8 +29,8 @@ export const useUserAuth=()=>{
         }
         fetchUserInfo()
 
-        return ()=>{
-            isMounted=false
+        return () => {
+            isMounted = false
         }
-    },[updatedUser,clearUser,navigate])
+    }, [updateUser, clearUser, navigate])
 }
