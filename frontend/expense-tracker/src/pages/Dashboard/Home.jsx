@@ -1,8 +1,11 @@
 import React from 'react'
+import DashboardLayout from '../../components/layouts/DashboardLayout'
 
-function Home() {
+const Home = () => {
   return (
-    <div>Home</div>
+    <DashboardLayout activeMenu="dashboard">
+      <div className='my-5 max-auto'></div>
+    </DashboardLayout>
   )
 }
 
