@@ -100,6 +100,11 @@ const Home = () => {
                     totalIncome={dashboardData?.totalIncome || 0}
                     />
 
+                    <RecentIncome
+                    transactions={dashboardData?.last60DaysIncome?.transactions || []}
+                    onSeeMore={()=>navigate("/income")}
+                    />
+
                 </div>
             </div>
         </DashboardLayout>
