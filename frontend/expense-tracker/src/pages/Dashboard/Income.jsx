@@ -14,7 +14,7 @@ const Income=() =>{
         data:null,
     })
 
-    const [OpenAddIncomeModal,setOpenAddIncomeModal]=useState(true)
+    const [OpenAddIncomeModal,setOpenAddIncomeModal]=useState(false)
 
     const fetchIncomeDetails=async()=>{
         if(loading) return 
@@ -65,7 +65,7 @@ const Income=() =>{
                 onClose={()=>setIncomeAddIncomeModal(false)}
                 title="Add Income"
                 >
-                    <div>Add Income Form</div>
+                    <AddIncomeForm onAddIncome={handleAddIncome}/>
                 </Modal>
             </div>
         </DashboardLayout>
