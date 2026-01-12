@@ -1,6 +1,53 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import DashboardLayout from '../../components/layouts/DashboardLayout'
+import IncomeOverview from '../../components/Income/IncomeOverview'
+import axiosInstance from '../../utils/axiosinstance'
+import Modal from '../../components/Modal'
 
-function Income() {
+const Income=() =>{
+
+    const[incomeData,setIncomeData]=useState([])
+    const [loading,setLoading]=useState(false)
+
+    const [openDeleteAlert,setOpenDeleteAlert]=useState({
+        show:false,
+        data:null,
+    })
+
+    const [OpenAddIncomeModal,setOpenAddIncomeModal]=useState(true)
+
+    const fetchIncomeDetails=async()=>{
+        if(loading) return 
+
+        setLoading(true)
+
+        try{
+            const response=await axiosInstance.get(
+                `${API_PATHS.INCOME.GET_ALL_INCOME}`
+            )
+            if(response.data){
+                setIncomeData(response.data)
+            }
+        }catch(error){
+            console.log("Something went wrong. Please try again.",error)
+        }finally{
+            setLoading(false)
+        }
+    }
+
+    const handleAddIncome=async (income)={}
+
+    const deleteIncome=async(id)=>{}
+
+    const handleDownloadIncomeDetails=async()=>{}
+
+    useEffect(()=>{
+        fetchIncomeDetails()
+
+        return ()=>{
+
+        }
+    },[])
     return (
         <DashboardLayout activeMenu="Income">
             <div className='my-5 mx-auto'>
@@ -12,6 +59,14 @@ function Income() {
                         />
                     </div>
                 </div>
+
+                <Modal 
+                isOpen={OpenAddIncomeModal}
+                onClose={()=>setIncomeAddIncomeModal(false)}
+                title="Add Income"
+                >
+                    <div>Add Income Form</div>
+                </Modal>
             </div>
         </DashboardLayout>
     )
