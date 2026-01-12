@@ -1,5 +1,6 @@
 import React from 'react'
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend, } from "recharts"
+import CustomLegend from './CustomLegend'
 
 const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
@@ -13,20 +14,8 @@ const CustomTooltip = ({ active, payload }) => {
     return null
 }
 
-const CustomLegend = ({ payload }) => {
-    return (
-        <div className='flex flex-wrap justify-center gap-4 mt-4'>
-            {payload.map((entry, index) => (
-                <div key={`legend-${index}`} className='flex items-center gap-2'>
-                    <div className='w-3 h-3 rounded-full' style={{ backgroundColor: entry.color }} />
-                    <span className='text-xs text-gray-600 font-medium'>{entry.value}</span>
-                </div>
-            ))}
-        </div>
-    )
-}
 
-const CustomePieChart = ({ data, label, totalAmount, colors, showTextAnchor, }) => {
+const CustomPieChart = ({ data, label, totalAmount, colors, showTextAnchor, }) => {
     return (
         <ResponsiveContainer width="100%" height={380}>
             <PieChart>
@@ -78,4 +67,4 @@ const CustomePieChart = ({ data, label, totalAmount, colors, showTextAnchor, }) 
     )
 }
 
-export default CustomePieChart
+export default CustomPieChart
