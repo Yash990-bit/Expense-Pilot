@@ -35,11 +35,12 @@ const Income=() =>{
         }
     }
 
-    const handleAddIncome=async (income)={}
+    const handleAddIncome = async (income) => {};
+    
+    const deleteIncome = async (id) => {};
+    
+    const handleDownloadIncomeDetails = async () => {};
 
-    const deleteIncome=async(id)=>{}
-
-    const handleDownloadIncomeDetails=async()=>{}
 
     useEffect(()=>{
         fetchIncomeDetails()
