@@ -3,11 +3,15 @@ import DashboardLayout from '../../components/layouts/DashboardLayout'
 import IncomeOverview from '../../components/Income/IncomeOverview'
 import axiosInstance from '../../utils/axiosinstance'
 import Modal from '../../components/Modal'
-import axios from 'axios'
 import { API_PATHS } from '../../utils/apiPaths'
-import toast from './App.jsx'
+import toast from 'react-hot-toast'
+import AddIncomeForm from '../../components/Income/AddIncomeForm'
+import IncomeList from '../../components/Income/IncomeList'
+import DeleteAlert from '../../components/DeleteAlert'
+import { useUserAuth } from '../../hooks/useUserAuth.jsx'
 
 const Income=() =>{
+    useUserAuth()
 
     const[incomeData,setIncomeData]=useState([])
     const [loading,setLoading]=useState(false)
@@ -72,7 +76,21 @@ const Income=() =>{
         }
     };
     
-    const deleteIncome = async (id) => {};
+    const deleteIncome = async (id) => {
+        try{
+            await axiosInstance.delete(API_PATHS.INCOME.DELETE_INCOME(id))
+
+            setOpenDeleteAlert({show:false,data:null})
+            toast.success("Income details deleted successfully")
+            fetchIncomeDetails()
+        }
+        catch(error){
+            console.error(
+                "Error deleting income:",
+                error.response?.data?.message || error.message
+            )
+        }
+    };
     
     const handleDownloadIncomeDetails = async () => {};
 
