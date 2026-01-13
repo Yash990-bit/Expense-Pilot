@@ -95,7 +95,7 @@ const Signup = () => {
                             onChange={(value) => setEmail(value)}
                             label="Email Address"
                             placeholder="Enter your email"
-                            type="text"
+                            type="email"
                         />
 
                         <div className='col-span-2'>
@@ -115,7 +115,7 @@ const Signup = () => {
                         type="submit"
                         className="btn-primary"
                     >
-                        SignUp
+                        Sign Up
                     </button>
 
                     <p className="text-[13px] text-slate-800 mt-3">

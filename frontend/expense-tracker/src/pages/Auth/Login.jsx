@@ -1,4 +1,4 @@
-import React, { useContext,useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import AuthLayout from "../../components/layouts/AuthLayout";
 import Input from "../../components/Inputs/Input";
@@ -12,7 +12,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
-  const {updateUser}=useContext(UserContext)
+  const { updateUser } = useContext(UserContext)
 
   const navigate = useNavigate();
 
@@ -35,7 +35,7 @@ function Login() {
         password,
       });
 
-      const { token,user } = response.data;
+      const { token, user } = response.data;
 
       if (token) {
         localStorage.setItem("token", token);
@@ -43,7 +43,7 @@ function Login() {
         navigate("/dashboard");
       }
     } catch (err) {
-      if (err.response  && err.response.data.message) {
+      if (err.response && err.response.data.message) {
         setError(err.response.data.message);
       } else {
         setError("An unexpected error occurred. Please try again.");
@@ -54,7 +54,7 @@ function Login() {
   return (
     <AuthLayout>
       <div className="lg:w-[70%] h-3/4 md:h-full flex flex-col justify-center">
-        <h3 className="text-xl font-semibold text-blue">
+        <h3 className="text-xl font-semibold text-primary">
           Welcome Back
         </h3>
 
@@ -68,7 +68,7 @@ function Login() {
             onChange={setEmail}
             label="Email Address"
             placeholder="Enter your email"
-            type="text"
+            type="email"
           />
 
           <Input
@@ -91,7 +91,7 @@ function Login() {
           <p className="text-[13px] text-slate-800 mt-3">
             Don't have an account?{" "}
             <Link className="font-medium text-primary underline " to="/signup">
-              SignUp
+              Sign Up
             </Link>
           </p>
         </form>

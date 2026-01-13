@@ -28,15 +28,21 @@ exports.registerUser = async (req, res) => {
             profileImageUrl
         })
 
+        const token = generateToken(user._id)
+
         res.status(201).json({
-            id: user._id,
-            user,
-            token: generateToken(user._id),
+            user: {
+                id: user._id,
+                fullName: user.fullName,
+                email: user.email,
+                profileImageUrl: user.profileImageUrl,
+            },
+            token,
         })
     }
     catch (err) {
         res.status(500).json({
-            message: "Error registering user", error: err.message
+            message: err.message || "Error registering user"
         })
     }
 }
@@ -88,7 +94,8 @@ exports.uploadImage = async (req, res) => {
         if (!req.file) {
             return res.status(400).json({ message: "No file uploaded" });
         }
-        const imageUrl = `http://localhost:8000/uploads/${req.file.filename}`;
+        const baseUrl = process.env.BASE_URL || "http://localhost:8000";
+        const imageUrl = `${baseUrl}/uploads/${req.file.filename}`;
         res.status(200).json({ imageUrl });
     } catch (err) {
         res.status(500).json({ message: "Error uploading image", error: err.message });
