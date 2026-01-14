@@ -24,11 +24,13 @@ const UserProvider = ({ children }) => {
                 setUser(response.data)
             }
         } catch (error) {
-            console.error("Error fetching user data:", error)
-            // If token is invalid or expired, clear it
-            if (error.response && error.response.status === 401) {
+            if (error.code === 'ERR_NETWORK') {
+                console.error("Network Error: Backend server might be down.")
+            } else if (error.response && error.response.status === 401) {
                 localStorage.removeItem("token")
                 clearUser()
+            } else {
+                console.error("Error fetching user data:", error)
             }
         } finally {
             setLoading(false)

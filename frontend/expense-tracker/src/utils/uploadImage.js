@@ -10,7 +10,10 @@ const uploadImage = async (imageFile) => {
         return response.data
     }
     catch (error) {
-        console.error('Error uploading the image', error)
+        console.error('Error uploading the image:', error.code, error.message, error.response?.data)
+        if (error.response && error.response.data && error.response.data.message) {
+            throw new Error(error.response.data.message)
+        }
         throw error
     }
 }

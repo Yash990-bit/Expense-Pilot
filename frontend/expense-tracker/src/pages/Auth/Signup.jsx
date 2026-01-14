@@ -42,8 +42,13 @@ const Signup = () => {
         try {
             let profileImageUrl = ""
             if (profilePic) {
-                const imgUploadRoutes = await uploadImage(profilePic)
-                profileImageUrl = imgUploadRoutes.imageUrl || ""
+                try {
+                    const imgUploadRes = await uploadImage(profilePic)
+                    profileImageUrl = imgUploadRes.imageUrl || ""
+                } catch (uploadError) {
+                    setError("Failed to upload profile image. Please try again.")
+                    return // Stop registration if image upload fails
+                }
             }
             const response = await axiosInstance.post(API_PATHS.AUTH.REGISTER, {
                 fullName,

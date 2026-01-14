@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import DashboardLayout from '../../components/layouts/DashboardLayout'
 import { useUserAuth } from '../../hooks/useUserAuth'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { API_PATHS } from '../../utils/apiPaths'
 import axiosInstance from '../../utils/axiosinstance'
 import { LuHandCoins, LuWalletMinimal } from 'react-icons/lu'
@@ -21,6 +21,7 @@ const Home = () => {
     useUserAuth()
 
     const navigate = useNavigate()
+    const location = useLocation()
 
     const [dashboardData, setdashboardData] = useState(null)
     const [loading, setLoading] = useState(false)
@@ -49,7 +50,7 @@ const Home = () => {
         return () => {
 
         }
-    }, [])
+    }, [location])
     return (
         <DashboardLayout activeMenu="dashboard">
             <div className='my-5 mx-auto'>
