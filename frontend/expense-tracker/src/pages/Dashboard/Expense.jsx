@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
+import { useUserAuth } from '../../hooks/useUserAuth'
 import DashboardLayout from '../../components/layouts/DashboardLayout'
-import ExpenseTransactions from '../../components/Dashboard/ExpenseTransactions'
-import Last30DaysExpenses from '../../components/Dashboard/Last30DaysExpenses'
 import axiosInstance from '../../utils/axiosinstance'
 import { API_PATHS } from '../../utils/apiPaths'
-import { useUserAuth } from '../../hooks/useUserAuth'
 import toast from 'react-hot-toast'
+import AddExpenseForm from '../../components/Expense/AddExpenseForm'
+import ExpenseOverview from '../../components/Expense/ExpenseOverview'
+import Modal from '../../components/Modal'
+
 
 function Expense() {
 
@@ -21,7 +23,7 @@ function Expense() {
 
 
 
-    const fetchExpenseDetials = async () => {
+    const fetchExpenseDetails = async () => {
         if (loading) return
         setLoading(true)
         try {
@@ -70,6 +72,45 @@ function Expense() {
         }
     };
 
+    const deleteExpense = async (id) => {
+        try {
+            await axiosInstance.delete(API_PATHS.EXPENSE.DELETE_EXPENSE(id))
+
+            setOpenDeleteAlert({ show: false, data: null })
+            toast.success("Expense details deleted successfully")
+            fetchExpenseDetails()
+        }
+        catch (error) {
+            console.error(
+                "Error deleting expense:",
+                error.response?.data?.message || error.message
+            )
+        }
+    };
+
+    const handleDownloadExpenseDetails = async () => {
+        try {
+            const response = await axiosInstance.get(API_PATHS.INCOME.DOWNLOAD_INCOME, {
+                responseType: 'blob', 
+            });
+
+
+            const url = window.URL.createObjectURL(new Blob([response.data]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', 'expense_details.xlsx'); 
+            document.body.appendChild(link);
+            link.click();
+            link.parentNode.removeChild(link);
+            window.URL.revokeObjectURL(url); 
+
+            toast.success("Expense details downloaded successfully");
+        } catch (error) {
+            console.error("Error downloading expense details:", error);
+            toast.error("Failed to download expense details. Please try again.");
+        }
+    };
+
     useEffect(()=>{
         fetchExpenseDetails()
     return ()=>{}
@@ -85,12 +126,25 @@ function Expense() {
                         transactions={expenseData}
                         onExpenseIncome={()=>setOpenAddExpenseModal(true)}
                     />
+                </div>
 
-                    <Last30DaysExpenses
-                        data={expenseData}
-                    />
-                </div>
-                </div>
+                <ExpenseList
+                transactions={expenseData}
+                onDelete={(id)=>{
+                    setOpenDeleteAlert({show:true,data:id})
+                }}
+                onDownload={handleDownloadExpenseDetails}
+                />
+            </div>
+
+            <Modal 
+            isOpen={openAddExpenseModal}
+            onClose={()=>setOpenAddExpenseModal(false)}
+            title="Add Expnse"
+            >
+                <AddExpenseForm onAddExpense={handleAddExpense}/>
+
+            </Modal>
             </div>
         </DashboardLayout>
     )
