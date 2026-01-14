@@ -1,18 +1,9 @@
 import React from 'react'
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend, } from "recharts"
 import CustomLegend from './CustomLegend'
+import CustomTooltip from './CustomTooltip'
 
-const CustomTooltip = ({ active, payload }) => {
-    if (active && payload && payload.length) {
-        return (
-            <div className='bg-white p-3 shadow-lg rounded-lg border border-gray-100'>
-                <p className='text-sm font-medium text-gray-800'>{payload[0].name}</p>
-                <p className='text-primary text-lg font-bold'>${payload[0].value}</p>
-            </div>
-        )
-    }
-    return null
-}
+
 
 
 const CustomPieChart = ({ data, label, totalAmount, colors, showTextAnchor, }) => {
