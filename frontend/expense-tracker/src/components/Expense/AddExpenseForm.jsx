@@ -21,7 +21,7 @@ const AddExpenseForm = ({ onAddExpense }) => {
 
             <Input
                 value={expense.category}
-                onChange={({ target }) => handleChange("category", target.value)}
+                onChange={(value) => handleChange("category", value)}
                 label="Category"
                 placeholder="Rent, Groceries, etc"
                 type='text'
@@ -29,7 +29,7 @@ const AddExpenseForm = ({ onAddExpense }) => {
 
             <Input
                 value={expense.amount}
-                onChange={({ target }) => handleChange("amount", target.value)}
+                onChange={(value) => handleChange("amount", value)}
                 label="Amount"
                 placeholder=""
                 type='number'
@@ -37,7 +37,7 @@ const AddExpenseForm = ({ onAddExpense }) => {
 
             <Input
                 value={expense.date}
-                onChange={({ target }) => handleChange("date", target.value)}
+                onChange={(value) => handleChange("date", value)}
                 label="Date"
                 placeholder=""
                 type='date'

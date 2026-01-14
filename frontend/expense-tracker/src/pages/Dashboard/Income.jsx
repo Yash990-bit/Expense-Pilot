@@ -47,14 +47,17 @@ const Income = () => {
 
         if (!source.trim()) {
             toast.error('Source is required')
+            return
         }
 
         if (!amount || isNaN(amount) || Number(amount) <= 0) {
-            toast.error("Amount should be valid and greater then 0")
+            toast.error("Amount should be valid and greater than 0")
+            return
         }
 
         if (!date) {
             toast.error("Date is required")
+            return
         }
 
         try {
@@ -95,17 +98,17 @@ const Income = () => {
     const handleDownloadIncomeDetails = async () => {
         try {
             const response = await axiosInstance.get(API_PATHS.INCOME.DOWNLOAD_INCOME, {
-                responseType: 'blob', 
+                responseType: 'blob',
             });
 
             const url = window.URL.createObjectURL(new Blob([response.data]));
             const link = document.createElement('a');
             link.href = url;
-            link.setAttribute('download', 'income_details.xlsx'); 
+            link.setAttribute('download', 'income_details.xlsx');
             document.body.appendChild(link);
             link.click();
             link.parentNode.removeChild(link);
-            window.URL.revokeObjectURL(url); 
+            window.URL.revokeObjectURL(url);
 
             toast.success("Income details downloaded successfully");
         } catch (error) {
