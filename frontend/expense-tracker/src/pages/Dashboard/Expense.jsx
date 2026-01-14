@@ -21,6 +21,7 @@ function Expense() {
     })
 
     const [openAddExpenseModal, setOpenAddExpenseModal] = useState(false)
+    const [editExpenseData, setEditExpenseData] = useState(null)
 
 
 
@@ -75,6 +76,48 @@ function Expense() {
 
         }
     };
+
+    const handleEditExpense = (expense) => {
+        setEditExpenseData(expense)
+        setOpenAddExpenseModal(true)
+    }
+
+    const handleUpdateExpense = async (expense) => {
+        const { category, amount, date, icon } = expense
+
+        if (!category.trim()) {
+            toast.error('Category is required')
+            return
+        }
+
+        if (!amount || isNaN(amount) || Number(amount) <= 0) {
+            toast.error("Amount should be valid and greater than 0")
+            return
+        }
+
+        if (!date) {
+            toast.error("Date is required")
+            return
+        }
+
+        try {
+            await axiosInstance.put(API_PATHS.EXPENSE.UPDATE_EXPENSE(editExpenseData._id), {
+                category,
+                amount,
+                date,
+                icon
+            })
+
+            setOpenAddExpenseModal(false)
+            setEditExpenseData(null)
+            toast.success("Expense updated successfully")
+            fetchExpenseDetails()
+        } catch (error) {
+            console.error("Error updating expense:",
+                error.response?.data?.message || error.message
+            )
+        }
+    }
 
     const deleteExpense = async (id) => {
         try {
@@ -135,6 +178,7 @@ function Expense() {
 
                     <ExpenseList
                         transactions={expenseData}
+                        onEdit={handleEditExpense}
                         onDelete={(id) => {
                             setOpenDeleteAlert({ show: true, data: id })
                         }}
@@ -144,10 +188,16 @@ function Expense() {
 
                 <Modal
                     isOpen={openAddExpenseModal}
-                    onClose={() => setOpenAddExpenseModal(false)}
-                    title="Add Expense"
+                    onClose={() => {
+                        setOpenAddExpenseModal(false)
+                        setEditExpenseData(null)
+                    }}
+                    title={editExpenseData ? "Edit Expense" : "Add Expense"}
                 >
-                    <AddExpenseForm onAddExpense={handleAddExpense} />
+                    <AddExpenseForm
+                        onAddExpense={editExpenseData ? handleUpdateExpense : handleAddExpense}
+                        initialData={editExpenseData}
+                    />
 
                 </Modal>
 

@@ -62,6 +62,45 @@ exports.deleteIncome = async (req, res) => {
     }
 }
 
+exports.updateIncome = async (req, res) => {
+    const userId = req.user.id
+    const { id } = req.params
+
+    try {
+        const { icon, source, amount, date } = req.body
+
+        if (!source || !amount || !date) {
+            return res.status(400).json({
+                message: "All fields are required"
+            })
+        }
+
+        const updatedIncome = await Income.findOneAndUpdate(
+            { _id: id, userId },
+            {
+                icon,
+                source,
+                amount: Number(amount),
+                date: new Date(date)
+            },
+            { new: true }
+        )
+
+        if (!updatedIncome) {
+            return res.status(404).json({
+                message: "Income not found"
+            })
+        }
+
+        res.status(200).json(updatedIncome)
+    }
+    catch (err) {
+        res.status(500).json({
+            message: "Server Error"
+        })
+    }
+}
+
 
 exports.downloadIncomeExcel = async (req, res) => {
     const userId = req.user.id

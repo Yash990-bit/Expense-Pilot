@@ -1,15 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Input from '../Inputs/Input'
 import EmojiPickerPopup from '../EmojiPickerPopup'
 
 
-const AddExpenseForm = ({ onAddExpense }) => {
+const AddExpenseForm = ({ onAddExpense, initialData }) => {
     const [expense, setExpense] = useState({
         category: "",
         amount: "",
         date: "",
         icon: ""
     })
+
+    useEffect(() => {
+        if (initialData) {
+            setExpense({
+                category: initialData.category || "",
+                amount: initialData.amount || "",
+                date: initialData.date ? new Date(initialData.date).toISOString().split('T')[0] : "",
+                icon: initialData.icon || "",
+            })
+        }
+    }, [initialData])
 
     const handleChange = (key, value) => setExpense({ ...expense, [key]: value })
     return (
