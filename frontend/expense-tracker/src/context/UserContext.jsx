@@ -2,6 +2,7 @@ import React, { createContext, useState, useEffect } from "react"
 import axiosInstance from "../utils/axiosinstance"
 import { API_PATHS } from "../utils/apiPaths"
 
+
 export const UserContext = createContext()
 
 const UserProvider = ({ children }) => {
