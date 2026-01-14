@@ -44,14 +44,17 @@ function Expense() {
 
         if (!category.trim()) {
             toast.error('Category is required')
+            return
         }
 
         if (!amount || isNaN(amount) || Number(amount) <= 0) {
-            toast.error("Amount should be valid and greater then 0")
+            toast.error("Amount should be valid and greater than 0")
+            return
         }
 
         if (!date) {
             toast.error("Date is required")
+            return
         }
 
         try {
