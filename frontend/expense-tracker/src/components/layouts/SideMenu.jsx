@@ -10,6 +10,7 @@ import axiosInstance from '../../utils/axiosinstance'
 import { API_PATHS } from '../../utils/apiPaths'
 import toast from 'react-hot-toast'
 import uploadImage from '../../utils/uploadImage'
+import { validateBaseUrl } from '../../utils/helper'
 
 const SideMenu = ({ activeMenu }) => {
     const { user, clearUser, updateUser } = useContext(UserContext)
@@ -84,7 +85,7 @@ const SideMenu = ({ activeMenu }) => {
                 <div onClick={() => setOpenEditModal(true)} className="cursor-pointer relative group">
                     {user?.profileImageUrl ? (
                         <img
-                            src={user?.profileImageUrl || ""}
+                            src={validateBaseUrl(user?.profileImageUrl) || ""}
                             alt="Profile Image"
                             className='w-20 h-20 bg-slate-400 rounded-full group-hover:opacity-80 transition-opacity'
                             onError={(e) => {

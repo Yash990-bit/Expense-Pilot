@@ -5,6 +5,19 @@ export const validateEmail = (email) => {
     return regex.test(email)
 }
 
+export const validateBaseUrl = (url) => {
+    if (!url) return null;
+
+    // If URL contains localhost but we are not on localhost (or just want to force prod URL)
+    if (url.includes("localhost")) {
+        const baseUrl = import.meta.env.VITE_API_URL || "http://localhost:8000";
+        // Replace http://localhost:8000 with the actual API base URL
+        // We assume the localhost part is the origin.
+        return url.replace("http://localhost:8000", baseUrl);
+    }
+    return url;
+}
+
 export const getInitials = (name) => {
     if (!name) return ""
 
