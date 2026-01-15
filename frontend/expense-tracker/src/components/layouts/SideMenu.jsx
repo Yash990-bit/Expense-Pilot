@@ -87,6 +87,10 @@ const SideMenu = ({ activeMenu }) => {
                             src={user?.profileImageUrl || ""}
                             alt="Profile Image"
                             className='w-20 h-20 bg-slate-400 rounded-full group-hover:opacity-80 transition-opacity'
+                            onError={(e) => {
+                                e.target.style.display = 'none'; // Hide broken image
+                                e.target.nextSibling.style.display = 'flex'; // Show avatar (fallback logic required)
+                            }}
                         />) : (
                         <CharAvatar
                             fullName={user?.fullName}
@@ -95,6 +99,18 @@ const SideMenu = ({ activeMenu }) => {
                             style="text-xl"
                         />
                     )}
+                    {/* Fallback CharAvatar if image breaks (hidden by default if image exists) */}
+                    {user?.profileImageUrl && (
+                        <div className="absolute inset-0 hidden items-center justify-center bg-slate-400 rounded-full">
+                            <CharAvatar
+                                fullName={user?.fullName}
+                                width="w-20"
+                                height="h-20"
+                                style="text-xl"
+                            />
+                        </div>
+                    )}
+
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                         <span className="text-xs bg-black/60 text-white px-2 py-1 rounded">Edit</span>
                     </div>
