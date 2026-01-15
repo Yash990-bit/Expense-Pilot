@@ -28,18 +28,19 @@ app.use("/api/v1/income", incomeRoutes)
 app.use("/api/v1/expense", expenseRoutes)
 app.use("/api/v1/dashboard", dashboardRoutes)
 
+app.get("/", (req, res) => {
+    res.send("Server is running | Expense Tracker API");
+});
+
 app.use("/uploads", express.static(path.join(__dirname, "uploads")))
 
-// Health check endpoint
 app.get("/api/health", (req, res) => {
     res.status(200).json({ status: "ok", message: "Server is running" })
 })
 
-// For Vercel serverless deployment
 if (process.env.VERCEL) {
     module.exports = app
 } else {
-    // For local development
     const PORT = process.env.PORT || 5000
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
 }
