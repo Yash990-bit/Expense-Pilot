@@ -1,26 +1,9 @@
 {
-    "name": "expense-tracker-fullstack",
+    "name": "expense-tracker-root",
     "version": "1.0.0",
-    "description": "Full-stack expense tracker application",
     "scripts": {
-        "install-backend": "cd backend && npm install",
-        "install-frontend": "cd frontend/expense-tracker && npm install",
-        "install-all": "npm run install-backend && npm run install-frontend",
-        "dev-backend": "cd backend && npm run dev",
-        "dev-frontend": "cd frontend/expense-tracker && npm run dev",
-        "build": "cd frontend/expense-tracker && npm install && npm run build",
-        "vercel-build": "cd frontend/expense-tracker && npm install && npm run build"
-    },
-    "keywords": [
-        "expense-tracker",
-        "fullstack",
-        "react",
-        "express"
-    ],
-    "author": "",
-    "license": "ISC",
-    "engines": {
-        "node": ">=18.0.0"
+        "start": "node backend/server.js",
+        "build": "echo 'No build step for backend' && exit 0"
     },
     "dependencies": {
         "bcryptjs": "^3.0.3",
@@ -31,5 +14,8 @@
         "mongoose": "^9.1.2",
         "multer": "^2.0.2",
         "xlsx": "^0.18.5"
+    },
+    "engines": {
+        "node": ">=18.x"
     }
 }
