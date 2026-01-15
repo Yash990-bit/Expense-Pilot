@@ -21,6 +21,9 @@ app.use(
 
 app.use(express.json())
 
+// Trust proxy for Render/Vercel to correctly identify protocol (http vs https)
+app.enable("trust proxy");
+
 connectDB()
 
 app.use("/api/v1/auth", authRoutes)

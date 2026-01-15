@@ -94,7 +94,7 @@ exports.uploadImage = async (req, res) => {
         if (!req.file) {
             return res.status(400).json({ message: "No file uploaded" });
         }
-        const baseUrl = process.env.BASE_URL || "http://localhost:8000";
+        const baseUrl = process.env.BASE_URL || `${req.protocol}://${req.get('host')}`;
         const imageUrl = `${baseUrl}/uploads/${req.file.filename}`;
         res.status(200).json({ imageUrl });
     } catch (err) {
