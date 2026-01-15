@@ -101,3 +101,37 @@ exports.uploadImage = async (req, res) => {
         res.status(500).json({ message: "Error uploading image", error: err.message });
     }
 }
+
+exports.updateUser = async (req, res) => {
+    const { fullName, profileImageUrl } = req.body;
+
+    if (!fullName) {
+        return res.status(400).json({ message: "Full name is required" });
+    }
+
+    try {
+        const user = await User.findById(req.user.id);
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        user.fullName = fullName;
+        if (profileImageUrl) {
+            user.profileImageUrl = profileImageUrl;
+        }
+
+        await user.save();
+
+        res.status(200).json({
+            message: "Profile updated successfully",
+            user: {
+                id: user._id,
+                fullName: user.fullName,
+                email: user.email,
+                profileImageUrl: user.profileImageUrl,
+            },
+        });
+    } catch (err) {
+        res.status(500).json({ message: "Error updating profile", error: err.message });
+    }
+}
