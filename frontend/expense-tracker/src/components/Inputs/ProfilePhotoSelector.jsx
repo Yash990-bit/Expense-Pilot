@@ -49,14 +49,16 @@ const ProfilePhotoSelector = ({ image, setImage }) => {
                 </div>
             ) : (
                 <div className='relative '>
-                    src={previewUrl || (typeof image === 'string' ? image : "")}
-                    alt="profile photo "
-                    className='w-20 h-20 rounded-full object-cover'
-                    onError={(e) => {
-                        // If it breaks, maybe just revert to "no image" view or show placeholder?
-                        // For simplicity in this UI, we can trigger the remove handler or just hide it
-                        setImage(null);
-                    }}
+                    <img
+                        src={previewUrl || (typeof image === 'string' ? image : "")}
+                        alt="profile photo"
+                        className='w-20 h-20 rounded-full object-cover'
+                        onError={(e) => {
+                            // If it breaks, maybe just revert to "no image" view or show placeholder?
+                            // For simplicity in this UI, we can trigger the remove handler or just hide it
+                            setImage(null);
+                        }}
+                    />
                     <button
                         type="button"
                         className='w-8 h-8 flex items-center justify-center bg-red-500 text-white rounded-full absolute -bottom-1 -right-1'
