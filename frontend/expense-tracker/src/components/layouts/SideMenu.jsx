@@ -31,7 +31,7 @@ const SideMenu = ({ activeMenu }) => {
                         <img
                             src={validateBaseUrl(user?.profileImageUrl) || ""}
                             alt="Profile Image"
-                            className='w-20 h-20 bg-slate-400 rounded-full'
+                            className='w-20 h-20 bg-slate-400 rounded-full object-cover'
                             onError={(e) => {
                                 e.target.style.display = 'none'; // Hide broken image
                                 e.target.nextSibling.style.display = 'flex'; // Show avatar
