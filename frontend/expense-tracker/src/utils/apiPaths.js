@@ -1,7 +1,4 @@
-export const BASE_URL =
-    window.location.hostname === 'localhost'
-        ? "http://localhost:8000"
-        : (import.meta.env.VITE_API_URL || "https://expense-pilot.onrender.com");
+export const BASE_URL = "https://expense-pilot.onrender.com";
 
 export const API_PATHS = {
     AUTH: {
