@@ -19,15 +19,21 @@ A full-stack Expense Tracker web application that helps users manage their incom
 
 ---
 
-##  Project Demo
+### Screenshots
 
-▶️ Watch the demo video of the Expense Tracker application showing login, dashboard, adding expenses, charts, and Excel export.
+**Homepage**
+![Homepage](./frontend/expense-tracker/src/assets/home_page.png)
 
- Drag & drop your demo video here when editing README on GitHub.
+**Add Expense**
+![Add Expense](./frontend/expense-tracker/src/assets/expense_page.png)
+
+*Add Income**
+![Add Income](./frontend/expense-tracker/src/assets/income_page.png)
+
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 - React 19
