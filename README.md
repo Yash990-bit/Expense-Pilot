@@ -1,53 +1,61 @@
-A full-stack Expense Tracker web application that helps users manage their income, expenses, and balance efficiently.
-The project is built with a modern React + Vite frontend and a Node.js + Express + MongoDB backend, following real-world development practices.
+#  Expense Tracker – Full Stack Application
 
-## User Features
+A full-stack Expense Tracker web application that helps users manage their income, expenses, and balance efficiently. Built with a React (Vite) frontend and a Node.js + Express + MongoDB backend.
 
-. User authentication using JWT
-. Add, edit, and delete income & expense records
-. Automatic balance calculation
-. Categorize transactions
-. View expenses by date
-. Export data to Excel
-. Upload files (receipts, documents)
-. Emoji support for better UI
-. Toast notifications for actions
+---
 
- ## Dashboard
+##  Features
 
-. Interactive charts using Recharts
-. Monthly & category-wise expense visualization
-. Clean and responsive UI with Tailwind CSS
+- JWT-based user authentication
+- Add, edit, and delete income & expense records
+- Automatic balance calculation
+- Category-wise and date-wise tracking
+- Interactive charts and analytics
+- Export expenses to Excel
+- File upload support (receipts)
+- Emoji support
+- Responsive UI with Tailwind CSS
+- Toast notifications
 
-## Tech Stack
+---
 
-- Frontend
+##  Project Demo
 
-React 19
-Vite
-Tailwind CSS
-React Router DOM
-Axios
-Recharts
-Moment.js
-React Icons
-React Hot Toast
-Emoji Picker
+▶️ Watch the demo video of the Expense Tracker application showing login, dashboard, adding expenses, charts, and Excel export.
 
-- Backend
+ Drag & drop your demo video here when editing README on GitHub.
 
-Node.js
-Express.js
-MongoDB
-Mongoose
-JWT Authentication
-Bcrypt.js
-Multer (File Upload)
-XLSX (Excel Export)
-CORS
-dotenv
+---
 
-## Project Structure
+## 🛠️ Tech Stack
+
+### Frontend
+- React 19
+- Vite
+- Tailwind CSS
+- React Router DOM
+- Axios
+- Recharts
+- Moment.js
+- React Icons
+- React Hot Toast
+- Emoji Picker
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- JWT Authentication
+- Bcrypt.js
+- Multer (File Upload)
+- XLSX (Excel Export)
+- CORS
+- dotenv
+
+---
+
+##  Project Structure
 
 expense-tracker/
 │
@@ -66,26 +74,67 @@ expense-tracker/
 │
 └── README.md
 
-## Installation & Setup
+---
 
-1️⃣ Clone the Repository
-git clone https://github.com/Yash990-bit/Expense-Pilot.git
+##  Installation & Setup
+
+### 1️⃣ Clone Repository
+
+git clone https://github.com/your-username/expense-tracker.git  
 cd expense-tracker
 
-2️⃣ Frontend Setup
-cd frontend
-npm install
-npm run dev
+---
 
-3️⃣ Backend Setup
-cd backend
-npm install
-npm run dev
+### 2️⃣ Frontend Setup
 
-## Environment Variables (Backend)
+cd frontend  
+npm install  
+npm run dev  
 
-Create a .env file inside the backend folder:
+Frontend runs at:  
+http://localhost:5173
 
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
+---
+
+### 3️⃣ Backend Setup
+
+cd backend  
+npm install  
+npm run dev  
+
+Backend runs at:  
+http://localhost:5000
+
+---
+
+##  Environment Variables (Backend)
+
+Create a .env file in backend folder:
+
+PORT=5000  
+MONGO_URI=your_mongodb_connection_string  
+JWT_SECRET=your_secret_key  
+
+---
+
+##  Available Scripts
+
+### Frontend
+- npm run dev – Start development server
+- npm run build – Build for production
+- npm run preview – Preview build
+- npm run lint – Run ESLint
+
+### Backend
+- npm start – Start server
+- npm run dev – Start server with nodemon
+
+---
+
+##  Problem Statement
+
+Managing expenses manually is time-consuming and error-prone. This application provides a secure and easy way to track income, expenses, and financial health.
+
+---
+
+
