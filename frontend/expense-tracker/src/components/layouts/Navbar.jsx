@@ -23,7 +23,7 @@ const Navbar = ({ activeMenu }) => {
 
                 <div className='flex items-center gap-3'>
                     <h2 className="text-2xl font-black text-white tracking-tighter">
-                        Expense<span className="text-violet-500 italic">Pilot</span>
+                        Expense<span className="text-violet-500">Tracker</span>
                     </h2>
                 </div>
             </div>

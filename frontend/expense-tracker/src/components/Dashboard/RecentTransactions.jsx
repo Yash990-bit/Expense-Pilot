@@ -5,9 +5,9 @@ import TransactionInfoCard from '../Cards/TransactionInfoCard'
 
 const RecentTransactions = ({ transactions, onSeeMore }) => {
     return (
-        <div className='card'>
-            <div className='flex items-center justify-between'>
-                <h5 className='text-lg'>Recent Transactions</h5>
+        <div className='card bg-white/[0.02] border-white/5'>
+            <div className='flex items-center justify-between mb-2'>
+                <h5 className='text-sm font-bold uppercase tracking-[0.2em] text-slate-500'>Recent Transactions</h5>
 
                 <button className='card-btn' onClick={onSeeMore}>
                     See All <LuArrowRight className="text-base" />
