@@ -1,5 +1,4 @@
 import React from 'react'
-import Card_1 from "../../assets/images/card1.png"
 
 const AuthLayout = ({ children }) => {
   return (
@@ -20,15 +19,6 @@ const AuthLayout = ({ children }) => {
             </p>
           </div>
 
-          {/* Minimalist Dashboard Preview */}
-          <div className='relative mt-8'>
-            <div className='absolute -inset-10 bg-white/5 blur-3xl rounded-full' />
-            <img
-              src={Card_1}
-              className='relative w-full h-auto object-contain drop-shadow-2xl'
-              alt="Dashboard"
-            />
-          </div>
         </div>
 
         {/* Subtle Background Decoration */}
