@@ -11,6 +11,8 @@
   --color-expense: #f43f5e;
   --color-accent: #f59e0b;
   --color-primary: #875cf5;
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --shadow-card-hover: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
 @layer base {
@@ -53,11 +55,11 @@
 }
 
 .card {
-  @apply bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-2xl shadow-[0_8px_32px_rgba(0, 0, 0, 0.3)] transition-all duration-300;
+  @apply bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-2xl shadow-card transition-all duration-300;
 }
 
 .card:hover {
-  @apply border-white/20 shadow-[0_8px_32px_rgba(0, 0, 0, 0.4)];
+  @apply border-white/20 shadow-card-hover;
 }
 
 .btn-primary {
