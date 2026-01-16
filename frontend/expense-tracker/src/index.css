@@ -14,8 +14,14 @@
 
 
   body {
-    background-color: #fcfbfc;
+    background-color: #0b0b0b;
+    color: #ffffff;
   }
+}
+
+@theme {
+  --color-income: #22c55e;
+  --color-expense: #ef4444;
 }
 
 .btn-primary {

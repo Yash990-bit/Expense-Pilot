@@ -63,11 +63,18 @@ const SideMenu = ({ activeMenu }) => {
             </div>
 
             {SIDE_MENU_DATA.map((item, index) => {
+                const isActive = activeMenu === item.label;
+                const isLogout = item.path === 'logout';
+
                 return (
                     <button
                         key={`menu_${index}`}
-                        className={`w-full flex items-center gap-4 text-[15px] ${activeMenu == item.label ? "text-white bg-primary" : ""
-                            } py-3 px-6 rounded-lg mb-3`}
+                        className={`w-full flex items-center gap-4 text-[15px] ${isActive
+                            ? "text-white bg-emerald-500 shadow-lg shadow-emerald-200"
+                            : isLogout
+                                ? "text-red-500 hover:bg-red-50 hover:text-red-600"
+                                : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                            } py-3 px-6 rounded-lg mb-3 transition-all duration-200`}
                         onClick={() => handleClick(item.path)}
                     >
                         <item.icon className="text-xl" />

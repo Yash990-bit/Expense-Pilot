@@ -10,9 +10,16 @@ const dashboardRoutes = require("./routes/dashboardRoutes")
 
 const app = express();
 
+const allowedOrigins = [
+    process.env.CLIENT_URL,
+    "http://localhost:5174",
+    "http://localhost:5173",
+    "https://expense-pilot-liard.vercel.app"
+].filter(Boolean);
+
 app.use(
     cors({
-        origin: [process.env.CLIENT_URL, "https://expense-pilot-liard.vercel.app"],
+        origin: allowedOrigins,
         methods: ["GET", "POST", "PUT", "DELETE"],
         allowedHeaders: "*",
         credentials: true
