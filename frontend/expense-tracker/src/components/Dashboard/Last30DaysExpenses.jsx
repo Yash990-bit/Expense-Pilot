@@ -13,7 +13,7 @@ const Last30DaysExpenses = ({ data }) => {
     return () => { }
   }, [data])
   return (
-    <div className='card bg-white/[0.02] border-white/5'>
+    <div className='card bg-white/[0.02] border-white/5 md:col-span-2'>
       <div className='flex items-center justify-between mb-2'>
         <h5 className='text-sm font-bold uppercase tracking-[0.2em] text-slate-500'>Last 30 Days Expenses</h5>
       </div>

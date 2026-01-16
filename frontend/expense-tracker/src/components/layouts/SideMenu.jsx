@@ -26,8 +26,7 @@ const SideMenu = ({ activeMenu }) => {
     return (
         <div className="w-64 h-[calc(100vh-100px)] bg-white/[0.03] backdrop-blur-3xl shadow-2xl m-4 rounded-[2.5rem] sticky top-[90px] z-20 flex flex-col border border-white/5">
             <div className='flex flex-col items-center justify-center gap-4 mt-10 mb-12'>
-                <div className="relative group">
-                    <div className="absolute -inset-1.5 bg-gradient-to-r from-violet-600/50 to-indigo-600/50 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+                <div className="relative">
                     {user?.profileImageUrl ? (
                         <img
                             src={validateBaseUrl(user?.profileImageUrl) || ""}
@@ -49,9 +48,6 @@ const SideMenu = ({ activeMenu }) => {
                     <h5 className='text-white font-semibold text-lg tracking-tight'>
                         {user?.fullName || "Guest User"}
                     </h5>
-                    <p className='text-slate-500 text-[10px] font-bold uppercase tracking-[0.2em] mt-1.5'>
-                        Premium Tier
-                    </p>
                 </div>
             </div>
 

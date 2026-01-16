@@ -28,7 +28,6 @@ const Navbar = ({ activeMenu }) => {
                 </div>
             </div>
 
-            {/* Removed System Status section */}
 
             {openSideMenu && (
                 <div className='fixed top-20 left-0 bg-black/60 backdrop-blur-3xl z-40 w-full h-[calc(100vh-80px)] overflow-y-auto animate-in fade-in duration-300'>

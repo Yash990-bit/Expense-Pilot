@@ -11,24 +11,24 @@ const CustomBarChart = ({ data }) => {
 
 
     return (
-        <div className='bg-white mt-6'>
+        <div className='mt-6'>
             <ResponsiveContainer width='100%' height={300}>
                 <BarChart data={data}>
-                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f5f5f5" />
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(255, 255, 255, 0.05)" />
 
                     <XAxis
                         dataKey="category"
-                        tick={{ fontSize: 12, fill: "#555" }}
+                        tick={{ fontSize: 12, fill: "#94a3b8" }}
                         axisLine={false}
                         tickLine={false}
                     />
                     <YAxis
-                        tick={{ fontSize: 12, fill: "#555" }}
+                        tick={{ fontSize: 12, fill: "#94a3b8" }}
                         axisLine={false}
                         tickLine={false}
                     />
 
-                    <Tooltip content={<CustomTooltip />} cursor={{ fill: 'transparent' }} />
+                    <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(255, 255, 255, 0.05)' }} />
 
                     <Bar
                         dataKey="amount"

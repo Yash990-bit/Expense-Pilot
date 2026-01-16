@@ -11,7 +11,7 @@ const AuthLayout = ({ children }) => {
       </div>
       <div className='hidden md:flex w-[40vw] h-screen bg-gradient-to-br from-indigo-700 to-purple-800 relative overflow-hidden flex-col justify-start p-16 pt-24'>
         <div className='relative z-10 w-full max-w-lg'>
-          {/* Header Messaging */}
+
           <div className='mb-12 text-white'>
             <h3 className='text-4xl font-bold mb-4 tracking-tight'>Smart Finance, Simplified.</h3>
             <p className='text-indigo-100/90 text-lg leading-relaxed'>
@@ -21,7 +21,6 @@ const AuthLayout = ({ children }) => {
 
         </div>
 
-        {/* Subtle Background Decoration */}
         <div className='absolute top-[-10%] right-[-10%] w-96 h-96 bg-white/5 rounded-full blur-3xl' />
         <div className='absolute bottom-[-10%] left-[-10%] w-80 h-80 bg-indigo-400/10 rounded-full blur-3xl' />
       </div>
