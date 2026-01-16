@@ -24,65 +24,70 @@ const SideMenu = ({ activeMenu }) => {
     }
 
     return (
-        <div className="w-64 h-[calc(100vh-61px)] bg-white border-r border-gray-200/50 p-5 sticky top-[61px] z-20">
-            <div className='flex flex-col items-center justify-center gap-3 mt-3 mb-7'>
+        <div className="w-64 h-[calc(100vh-81px)] bg-white/95 backdrop-blur-md shadow-2xl shadow-black/20 m-4 rounded-3xl sticky top-[81px] z-20 flex flex-col border border-white/20">
+            <div className='flex flex-col items-center justify-center gap-3 mt-8 mb-10'>
                 <div className="relative group">
+                    <div className="absolute -inset-1 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
                     {user?.profileImageUrl ? (
                         <img
                             src={validateBaseUrl(user?.profileImageUrl) || ""}
                             alt="Profile Image"
-                            className='w-20 h-20 bg-slate-400 rounded-full object-cover'
+                            className='relative w-20 h-20 bg-slate-200 rounded-full object-cover border-2 border-white'
                             onError={(e) => {
-                                e.target.style.display = 'none'; // Hide broken image
-                                e.target.nextSibling.style.display = 'flex'; // Show avatar
+                                e.target.style.display = 'none';
+                                e.target.nextSibling.style.display = 'flex';
                             }}
                         />) : (
-                        <CharAvatar
-                            fullName={user?.fullName}
-                            width="w-20"
-                            height="h-20"
-                            style="text-xl"
-                        />
-                    )}
-                    {/* Fallback CharAvatar if image breaks (hidden by default if image exists) */}
-                    {user?.profileImageUrl && (
-                        <div className="absolute inset-0 hidden items-center justify-center bg-slate-400 rounded-full">
+                        <div className="relative">
                             <CharAvatar
                                 fullName={user?.fullName}
                                 width="w-20"
                                 height="h-20"
-                                style="text-xl"
+                                style="text-xl bg-gradient-to-br from-violet-100 to-indigo-100 text-violet-700 font-bold"
                             />
                         </div>
                     )}
                 </div>
 
-                <h5 className='text-gray-950 font-medium leading-6'>
-                    {user?.fullName || ""}
-                </h5>
+                <div className='text-center'>
+                    <h5 className='text-slate-900 font-bold text-lg leading-tight tracking-tight'>
+                        {user?.fullName || "Guest User"}
+                    </h5>
+                    <p className='text-slate-500 text-xs font-medium uppercase tracking-widest mt-1'>
+                        Free Account
+                    </p>
+                </div>
             </div>
 
-            {SIDE_MENU_DATA.map((item, index) => {
-                const isActive = activeMenu === item.label;
-                const isLogout = item.path === 'logout';
+            <div className='px-4 space-y-2 flex-grow'>
+                {SIDE_MENU_DATA.map((item, index) => {
+                    const isActive = activeMenu === item.label;
+                    const isLogout = item.path === 'logout';
 
-                return (
-                    <button
-                        key={`menu_${index}`}
-                        className={`w-full flex items-center gap-4 text-[15px] ${isActive
-                            ? "text-white bg-emerald-500 shadow-lg shadow-emerald-200"
-                            : isLogout
-                                ? "text-red-500 hover:bg-red-50 hover:text-red-600"
-                                : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
-                            } py-3 px-6 rounded-lg mb-3 transition-all duration-200`}
-                        onClick={() => handleClick(item.path)}
-                    >
-                        <item.icon className="text-xl" />
-                        {item.label}
-                    </button>
-                )
-            })}
+                    return (
+                        <button
+                            key={`menu_${index}`}
+                            className={`w-full flex items-center gap-4 text-[14px] font-semibold ${isActive
+                                ? "text-white bg-gradient-to-r from-violet-600 to-indigo-600 shadow-lg shadow-indigo-200"
+                                : isLogout
+                                    ? "text-rose-500 hover:bg-rose-50"
+                                    : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                                } py-3.5 px-6 rounded-2xl transition-all duration-300 active:scale-95`}
+                            onClick={() => handleClick(item.path)}
+                        >
+                            <item.icon className={`text-xl ${isActive ? "text-white" : isLogout ? "text-rose-500" : "text-slate-400"}`} />
+                            {item.label}
+                        </button>
+                    )
+                })}
+            </div>
 
+            <div className='p-6 mt-auto'>
+                <div className='bg-slate-50 rounded-2xl p-4 border border-slate-100'>
+                    <p className='text-slate-600 text-[11px] font-bold uppercase tracking-wider mb-2'>Need Help?</p>
+                    <button className='text-violet-600 text-xs font-bold hover:underline'>Contact Support</button>
+                </div>
+            </div>
         </div>
     )
 }

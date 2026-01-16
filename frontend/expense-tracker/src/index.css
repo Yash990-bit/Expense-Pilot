@@ -4,46 +4,78 @@
 @theme {
   --font-display: "Poppins", "sans-serif";
   --breakpoint-3xl: 1920px;
-  --color-primary: #875cf5
+}
+
+@theme {
+  --color-income: #10b981;
+  --color-expense: #f43f5e;
+  --color-accent: #f59e0b;
+  --color-primary: #875cf5;
 }
 
 @layer base {
   html {
     font-family: var(--font-display);
+    scroll-behavior: smooth;
   }
 
-
   body {
-    background-color: #0b0b0b;
+    background-color: #050505;
+    background-image:
+      radial-gradient(circle at 50% -20%, #1e1b4b 0%, transparent 60%),
+      radial-gradient(circle at 0% 0%, #000000 0%, #050505 100%);
+    color: #f8fafc;
+    min-height: 100vh;
+  }
+
+  /* Custom Scrollbar for Chrome/Safari */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #050505;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #1e1b4b;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #312e81;
+  }
+
+  ::selection {
+    background: rgba(135, 92, 245, 0.3);
     color: #ffffff;
   }
 }
 
-@theme {
-  --color-income: #22c55e;
-  --color-expense: #ef4444;
+.card {
+  @apply bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-2xl shadow-[0_8px_32px_rgba(0, 0, 0, 0.3)] transition-all duration-300;
+}
+
+.card:hover {
+  @apply border-white/20 shadow-[0_8px_32px_rgba(0, 0, 0, 0.4)];
 }
 
 .btn-primary {
-  @apply w-full text-sm font-medium text-white bg-violet-500 shadow-lg shadow-purple-600/5 p-[10px] rounded-md my-1 hover:bg-violet-600 transition-all duration-300
+  @apply w-full text-sm font-semibold text-white bg-gradient-to-r from-violet-600 to-indigo-600 shadow-lg shadow-indigo-500/20 p-[12px] rounded-xl my-2 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300;
 }
 
 .input-box {
-  @apply w-full flex justify-between gap-3 text-sm text-black bg-slate-100 rounded px-4 py-3 mb-4 mt-3 border-slate-200 outline-none
-}
-
-.card {
-  @apply bg-white p-6 rounded-2xl shadow-md shadow-gray-100 border border-gray-200/50
+  @apply w-full flex justify-between gap-3 text-sm text-white bg-white/5 rounded-xl px-4 py-3.5 mb-4 mt-3 border border-white/10 outline-none focus:border-violet-500/50 focus:bg-white/10 transition-all duration-200 placeholder:text-slate-500;
 }
 
 .card-btn {
-  @apply flex items-center gap-3 text-[12px] font-medium text-gray-700 hover:text-purple-500 bg-gray-50 hover:bg-purple-50 px-4 py-1.5 rounded-lg border border-gray-200/50 cursor-pointer
+  @apply flex items-center gap-3 text-[12px] font-medium text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 px-4 py-2 rounded-xl border border-white/5 cursor-pointer transition-all;
 }
 
 .add-btn {
-  @apply flex items-center gap-1.5 text-xs md:text-sm font-medium text-purple-600 whitespace-nowrap bg-purple-50 border border-purple-100 rounded-lg px-4 py-2 cursor-pointer
+  @apply flex items-center gap-1.5 text-xs md:text-sm font-semibold text-violet-400 whitespace-nowrap bg-violet-500/10 border border-violet-500/20 rounded-xl px-5 py-2.5 cursor-pointer hover:bg-violet-500/20 transition-all;
 }
 
 .add-btn-fill {
-  @apply text-white bg-primary
+  @apply text-white bg-gradient-to-r from-violet-600 to-indigo-600 border-none shadow-md shadow-violet-500/20;
 }
