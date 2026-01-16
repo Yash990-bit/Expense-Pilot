@@ -70,10 +70,9 @@ function Expense() {
             toast.success("Expense added successfully")
             fetchExpenseDetails()
         } catch (error) {
-            console.error("Error adding expense:",
-                error.response?.data?.message || error.message
-            )
-
+            const errorMessage = error.response?.data?.message || "Error adding expense. Please try again.";
+            console.error("Error adding expense:", errorMessage);
+            toast.error(errorMessage);
         }
     };
 

@@ -81,13 +81,6 @@ const SideMenu = ({ activeMenu }) => {
                     )
                 })}
             </div>
-
-            <div className='p-6 mt-auto'>
-                <div className='bg-slate-50 rounded-2xl p-4 border border-slate-100'>
-                    <p className='text-slate-600 text-[11px] font-bold uppercase tracking-wider mb-2'>Need Help?</p>
-                    <button className='text-violet-600 text-xs font-bold hover:underline'>Contact Support</button>
-                </div>
-            </div>
         </div>
     )
 }

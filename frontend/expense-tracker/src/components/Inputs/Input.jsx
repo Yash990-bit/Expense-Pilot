@@ -11,7 +11,7 @@ const Input = ({ value, onChange, placeholder, label, type = "text" }) => {
   return (
     <div>
       {label && (
-        <label className="text-[13px] text-slate-800">
+        <label className="text-[13px] text-slate-400 font-medium ml-1">
           {label}
         </label>
       )}

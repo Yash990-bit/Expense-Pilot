@@ -55,10 +55,10 @@ const AddIncomeForm = ({ onAddIncome, initialData }) => {
                 type="date"
             />
 
-            <div className='flex justify-end mt-6'>
+            <div className='mt-8'>
                 <button
                     type='button'
-                    className='add-btn add-btn-fill'
+                    className='add-btn add-btn-fill w-full py-4 text-base shadow-xl'
                     onClick={() => onAddIncome(income)}
                 >
                     Add Income

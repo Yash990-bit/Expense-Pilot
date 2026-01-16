@@ -73,10 +73,9 @@ const Income = () => {
             toast.success("Income added successfully")
             fetchIncomeDetails()
         } catch (error) {
-            console.error("Error adding income:",
-                error.response?.data?.message || error.message
-            )
-
+            const errorMessage = error.response?.data?.message || "Error adding income. Please try again.";
+            console.error("Error adding income:", errorMessage);
+            toast.error(errorMessage);
         }
     };
 

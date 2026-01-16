@@ -4,45 +4,45 @@ import { LuUtensils, LuTrendingUp, LuTrendingDown, LuTrash2, LuPencil } from 're
 const TransactionInfoCard = ({ title, icon, date, amount, type, hideDeleteBtn, onDelete, onEdit }) => {
 
     const getAmountStyles = () =>
-        type === "income" ? "bg-green-50 text-green-500" : "bg-red-50 text-red-500"
+        type === "income" ? "bg-emerald-500/10 text-emerald-400" : "bg-rose-500/10 text-rose-400"
 
     return (
-        <div className='group relative flex items-center gap-4 mt-2 p-3 rounded-lg hover:bg-gray-100/60 '>
-            <div className='w-12 h-12 flex items-center justify-center text-xl text-gray-800 bg-gray-100 rounded-full '>
+        <div className='group relative flex items-center gap-4 mt-2 p-3 rounded-lg hover:bg-white/5 transition-colors'>
+            <div className='w-12 h-12 flex items-center justify-center text-2xl text-white bg-white/5 rounded-full border border-white/5'>
                 {icon ? (
-                    <img src={icon} alt={title} className='w-6 h-6' />
+                    <span className='w-6 h-6 flex items-center justify-center'>{icon}</span>
                 ) : (
-                    <LuUtensils />
+                    <LuUtensils className='text-slate-400' />
                 )}
             </div>
 
             <div className='flex-1 flex items-center justify-between'>
                 <div>
-                    <p className='text-sm text-gray-700 font-medium '>{title}</p>
-                    <p className='text-xs text-gray-400 mt-1 '>{date}</p>
+                    <p className='text-sm text-slate-200 font-semibold'>{title}</p>
+                    <p className='text-[10px] text-slate-500 font-medium tracking-wider uppercase mt-0.5'>{date}</p>
                 </div>
             </div>
 
-            <div className='flex items-center gap-2'>
-                {!hideDeleteBtn && (
-                    <>
-                        <button className='text-gray-400 hover:text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer'
-                            onClick={onEdit}>
-                            <LuPencil size={18} />
-                        </button>
-                        <button className='text-gray-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer'
-                            onClick={onDelete}>
-                            <LuTrash2 size={18} />
-                        </button>
-                    </>
-                )}
-
-                <div className={`flex items-center gap-2 px-3 py-1.5 rounded-md ${getAmountStyles()}`}>
-                    <h6 className='text-xs font-medium'>
+            <div className='flex items-center gap-3'>
+                <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full ${getAmountStyles()}`}>
+                    <h6 className='text-xs font-bold'>
                         {type === "income" ? "+" : "-"} ${amount}
                     </h6>
-                    {type === "income" ? <LuTrendingUp /> : <LuTrendingDown />}
+                    {type === "income" ? <LuTrendingUp size={14} /> : <LuTrendingDown size={14} />}
                 </div>
+
+                {!hideDeleteBtn && (
+                    <div className='flex items-center gap-1'>
+                        <button className='p-2 text-slate-500 hover:text-white hover:bg-white/10 rounded-lg transition-all cursor-pointer'
+                            onClick={onEdit}>
+                            <LuPencil size={16} />
+                        </button>
+                        <button className='p-2 text-slate-500 hover:text-rose-400 hover:bg-rose-500/10 rounded-lg transition-all cursor-pointer'
+                            onClick={onDelete}>
+                            <LuTrash2 size={16} />
+                        </button>
+                    </div>
+                )}
             </div>
         </div>
     )
